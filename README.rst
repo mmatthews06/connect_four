@@ -40,7 +40,7 @@ Features
 --------
 
 * A Connect Four game in the console.
-* Created using _Cruft: https://cruft.github.io/cruft/
+* Created using _Cruft
 * ..From the cookiecutter-hypermodern-python repository mentioned below.
 * Written with Python 3.10.0, though I've confirmed that it works with 3.9.7
 
@@ -107,3 +107,4 @@ This project was generated from `@cjolowicz`_'s `Hypermodern Python Cookiecutter
 .. github-only
 .. _Contributor Guide: CONTRIBUTING.rst
 .. _Usage: https://connect_four.readthedocs.io/en/latest/usage.html
+.. _Cruft: https://cruft.github.io/cruft/
