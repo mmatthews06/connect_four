@@ -22,6 +22,19 @@ class GameBoard():
     def board(self) -> List[List[int]]:
         return self._board
 
+    def check_win(self, piece: GamePiece, rowIdx: int, colIdx: int) -> bool:
+        for sequence in self.neighborhood(rowIdx, colIdx):
+            pieces_in_a_row = 0
+
+            for board_piece in sequence:
+                if board_piece == piece.value:
+                    pieces_in_a_row += 1
+
+                if pieces_in_a_row == 4:
+                    return True
+
+        return False
+
     def display(self) -> None:
         for row in self.board():
             print(' '.join([str(i) for i in row]))
@@ -56,7 +69,7 @@ class GameBoard():
             second_diagonal,
         ]
 
-    def play(self, piece: GamePiece, columnIdx: int):
+    def play(self, piece: GamePiece, columnIdx: int) -> int:
         # TODO: Throw exception if column index out of range.
         # TODO: Throw exception if column is already full.
         last_empty_row = 0
@@ -67,6 +80,8 @@ class GameBoard():
             last_empty_row = rowIdx
 
         self._board[last_empty_row][columnIdx] = piece.value
+
+        return last_empty_row
 
 
 class Diagonals():

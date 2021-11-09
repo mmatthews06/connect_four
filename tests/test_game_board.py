@@ -78,6 +78,29 @@ def test_play_full_last_column():
     ]
 
 
+def test_play_diagonal():
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.YELLOW, 1)
+    gb.play(GamePiece.RED, 1)
+    gb.play(GamePiece.YELLOW, 2)
+    gb.play(GamePiece.YELLOW, 2)
+    gb.play(GamePiece.RED, 2)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.RED, 3)
+
+    assert gb.board() == [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 2, 0, 0, 0],
+        [0, 1, 2, 2, 0, 0, 0],
+        [1, 2, 2, 2, 0, 0, 0],
+    ]
+
+
 def test_neighborhood_bottom_left():
     gb = GameBoard()
     neighborhood = gb.neighborhood(5, 0)
@@ -105,6 +128,56 @@ def test_neighborhood_bottom_left_with_pieces():
         [0, 0, 0, 0, 0, 1],
         []
     ]
+
+
+def test_check_win_bottom_row():
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.RED, 1)
+    gb.play(GamePiece.RED, 2)
+    rowIdx = gb.play(GamePiece.RED, 3)
+
+    assert rowIdx == 5
+    assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
+
+
+def test_check_win_column():
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.RED, 0)
+    rowIdx = gb.play(GamePiece.RED, 0)
+
+    assert rowIdx == 2
+    assert gb.check_win(GamePiece.RED, rowIdx, 0) == True
+
+
+def test_check_not_win_diff_column():
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.RED, 0)
+    rowIdx = gb.play(GamePiece.RED, 0)
+
+    assert rowIdx == 2
+    assert gb.check_win(GamePiece.RED, rowIdx, 2) == False
+
+
+def test_check_win_diagonal():
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.YELLOW, 1)
+    gb.play(GamePiece.RED, 1)
+    gb.play(GamePiece.YELLOW, 2)
+    gb.play(GamePiece.YELLOW, 2)
+    gb.play(GamePiece.RED, 2)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    rowIdx = gb.play(GamePiece.RED, 3)
+
+    assert rowIdx == 2
+    assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
 
 
 def test_diagonals_down():
