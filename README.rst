@@ -1,7 +1,7 @@
 Connect_Four
 ============
 
-|PyPI| |Status| |Python Version| |License|
+|Python Version| |License|
 
 |Read the Docs| |Tests| |Codecov|
 
