@@ -1,15 +1,15 @@
 """Command-line interface."""
 import click
 
-from .game_board import GameBoard
+from connect_four.game import Game
 
 
 @click.command()
 @click.version_option()
 def main() -> None:
     """Connect_Four."""
-    gb = GameBoard()
-    gb.display()
+    game = Game()
+    game.play()
 
     return 0
 
