@@ -25,7 +25,7 @@ class Game():
             print('-' * 40)
             self.game_board.display()
             col_idx = int(input('Pick a column:'))
-            self.game_board.play(active_player, col_idx)
+            row_idx = self.game_board.play(active_player, col_idx)
 
         self.winner = active_player
 
