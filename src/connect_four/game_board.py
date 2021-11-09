@@ -33,6 +33,8 @@ class GameBoard:
             for board_piece in sequence:
                 if board_piece == piece.value:
                     pieces_in_a_row += 1
+                else:
+                    pieces_in_a_row = 0
 
                 if pieces_in_a_row == 4:
                     return True
