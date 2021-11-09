@@ -1,6 +1,6 @@
-
 from enum import Enum
-from typing import List, Tuple
+from typing import List
+from typing import Tuple
 
 
 class GamePiece(Enum):
@@ -8,21 +8,25 @@ class GamePiece(Enum):
     YELLOW = 2
 
 
-class GameBoard():
+class GameBoard:
     NUM_ROWS: int = 6
     NUM_COLS: int = 7
 
     def __init__(self) -> None:
         self._diagonals = Diagonals()
         self._board: List[List[int]] = [
-            [0 for j in range(self.NUM_COLS)]
-            for i in range(self.NUM_ROWS)
+            [0 for j in range(self.NUM_COLS)] for i in range(self.NUM_ROWS)
         ]
 
     def board(self) -> List[List[int]]:
         return self._board
 
     def check_win(self, piece: GamePiece, rowIdx: int, colIdx: int) -> bool:
+        """
+        TODO: This is a fairly "low-level" method, something that doesn't
+        require both rowIdx and colIdx could be done, but that likely means
+        changing "play()", as well.
+        """
         for sequence in self.neighborhood(rowIdx, colIdx):
             pieces_in_a_row = 0
 
@@ -37,7 +41,7 @@ class GameBoard():
 
     def display(self) -> None:
         for row in self.board():
-            print(' '.join([str(i) for i in row]))
+            print(" ".join([str(i) for i in row]))
 
     def neighborhood(self, rowIdx: int, colIdx: int) -> List[List[int]]:
         # TODO: Raise exception if either index is out of bounds.
@@ -84,7 +88,7 @@ class GameBoard():
         return last_empty_row
 
 
-class Diagonals():
+class Diagonals:
     UPWARD_DIAGONALS: List[List[Tuple[int, int]]] = [
         [(0, 3), (1, 2), (2, 1), (3, 0)],
         [(0, 4), (1, 3), (2, 2), (3, 1), (4, 0)],
@@ -95,7 +99,7 @@ class Diagonals():
     ]
 
     DOWNWARD_DIAGONALS: List[List[Tuple[int, int]]] = [
-        [(0, 3), (1, 4), (2,5), (3, 6)],
+        [(0, 3), (1, 4), (2, 5), (3, 6)],
         [(0, 2), (1, 3), (2, 4), (3, 5), (4, 6)],
         [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)],
         [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5)],
@@ -103,7 +107,7 @@ class Diagonals():
         [(2, 0), (3, 1), (4, 2), (5, 3)],
     ]
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.up_diagonals = {}
         self.down_diagonals = {}
 

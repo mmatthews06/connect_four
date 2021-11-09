@@ -1,13 +1,12 @@
+from typing import List
+from typing import Tuple
+from unittest.mock import call
+from unittest.mock import MagicMock
+from unittest.mock import patch
 
-from typing import List, Tuple
-from unittest.mock import call, patch, MagicMock
-
-from connect_four.game_board import Diagonals, GameBoard
+from connect_four.game_board import Diagonals
+from connect_four.game_board import GameBoard
 from connect_four.game_board import GamePiece
-
-def play(gameBoard: GameBoard, plays: List[Tuple[int, GamePiece]]):
-    for colIdx, piece in plays:
-        gameBoard.play(piece, colIdx)
 
 
 def test_initial_board() -> None:
@@ -16,22 +15,22 @@ def test_initial_board() -> None:
     assert len(gb.board()) == 6
 
 
-@patch('builtins.print')
+@patch("builtins.print")
 def test_display(mock_print: MagicMock) -> None:
     gb = GameBoard()
     gb.display()
 
     assert mock_print.mock_calls == [
-        call('0 0 0 0 0 0 0'),
-        call('0 0 0 0 0 0 0'),
-        call('0 0 0 0 0 0 0'),
-        call('0 0 0 0 0 0 0'),
-        call('0 0 0 0 0 0 0'),
-        call('0 0 0 0 0 0 0'),
+        call("0 0 0 0 0 0 0"),
+        call("0 0 0 0 0 0 0"),
+        call("0 0 0 0 0 0 0"),
+        call("0 0 0 0 0 0 0"),
+        call("0 0 0 0 0 0 0"),
+        call("0 0 0 0 0 0 0"),
     ]
 
 
-def test_play_single():
+def test_play_single() -> None:
     gb = GameBoard()
 
     gb.play(GamePiece.RED, 0)
@@ -46,7 +45,7 @@ def test_play_single():
     ]
 
 
-def test_play_full_column():
+def test_play_full_column() -> None:
     gb = GameBoard()
 
     for _ in range(GameBoard.NUM_ROWS):
@@ -78,7 +77,7 @@ def test_play_full_last_column():
     ]
 
 
-def test_play_diagonal():
+def test_play_diagonal() -> None:
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.YELLOW, 1)
@@ -101,7 +100,7 @@ def test_play_diagonal():
     ]
 
 
-def test_neighborhood_bottom_left():
+def test_neighborhood_bottom_left() -> None:
     gb = GameBoard()
     neighborhood = gb.neighborhood(5, 0)
 
@@ -109,11 +108,11 @@ def test_neighborhood_bottom_left():
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
-        []
+        [],
     ]
 
 
-def test_neighborhood_bottom_left_with_pieces():
+def test_neighborhood_bottom_left_with_pieces() -> None:
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 1)
@@ -126,11 +125,11 @@ def test_neighborhood_bottom_left_with_pieces():
         [0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 0, 0, 0],
         [0, 0, 0, 0, 0, 1],
-        []
+        [],
     ]
 
 
-def test_check_win_bottom_row():
+def test_check_win_bottom_row() -> None:
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 1)
@@ -141,7 +140,7 @@ def test_check_win_bottom_row():
     assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
 
 
-def test_check_win_column():
+def test_check_win_column() -> None:
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 0)
@@ -152,7 +151,7 @@ def test_check_win_column():
     assert gb.check_win(GamePiece.RED, rowIdx, 0) == True
 
 
-def test_check_not_win_diff_column():
+def test_check_not_win_diff_column() -> None:
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 0)
@@ -163,7 +162,7 @@ def test_check_not_win_diff_column():
     assert gb.check_win(GamePiece.RED, rowIdx, 2) == False
 
 
-def test_check_win_diagonal():
+def test_check_win_diagonal() -> None:
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.YELLOW, 1)
@@ -180,14 +179,21 @@ def test_check_win_diagonal():
     assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
 
 
-def test_diagonals_down():
+def test_diagonals_down() -> None:
     diagonals = Diagonals()
 
     assert diagonals.get_down_diagonal(0, 4) == []
-    assert diagonals.get_down_diagonal(0, 1) == [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)]
+    assert diagonals.get_down_diagonal(0, 1) == [
+        (0, 1),
+        (1, 2),
+        (2, 3),
+        (3, 4),
+        (4, 5),
+        (5, 6),
+    ]
 
 
-def test_diagonals_up():
+def test_diagonals_up() -> None:
     diagonals = Diagonals()
 
     assert diagonals.get_up_diagonal(0, 4) == [(0, 4), (1, 3), (2, 2), (3, 1), (4, 0)]
