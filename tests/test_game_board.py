@@ -215,6 +215,53 @@ def test_check_win_diagonal() -> None:
     assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
 
 
+def test_check_not_win_with_gap() -> None:
+    """
+    A gap in the sequence on the bottom row should not indicate a win.
+    """
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.RED, 1)
+    gb.play(GamePiece.RED, 2)
+    rowIdx = gb.play(GamePiece.RED, 4)
+
+    assert rowIdx == 5
+    assert gb.check_win(GamePiece.RED, rowIdx, 4) == False
+
+
+def test_check_not_win_with_gap_in_diagonal() -> None:
+    """
+    A gap in the sequence on the diagonal should not indicate a win.
+    """
+    gb = GameBoard()
+    gb.play(GamePiece.RED, 0)
+    gb.play(GamePiece.YELLOW, 1)
+    gb.play(GamePiece.RED, 1)
+    gb.play(GamePiece.YELLOW, 2)
+    gb.play(GamePiece.YELLOW, 2)
+    gb.play(GamePiece.RED, 2)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 3)
+    gb.play(GamePiece.YELLOW, 4)
+    gb.play(GamePiece.YELLOW, 4)
+    gb.play(GamePiece.YELLOW, 4)
+    gb.play(GamePiece.YELLOW, 4)
+    rowIdx = gb.play(GamePiece.RED, 4)
+
+    assert rowIdx == 1
+    assert gb.board() == [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 2, 2, 0, 0],
+        [0, 0, 1, 2, 2, 0, 0],
+        [0, 1, 2, 2, 2, 0, 0],
+        [1, 2, 2, 2, 2, 0, 0],
+    ]
+    assert gb.check_win(GamePiece.RED, rowIdx, 4) == False
+
+
 def test_diagonals_down() -> None:
     """
     The Diagonal helper class should return the right
