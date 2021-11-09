@@ -7,12 +7,6 @@ Connect_Four
 
 |pre-commit| |Black|
 
-.. |PyPI| image:: https://img.shields.io/pypi/v/connect_four.svg
-   :target: https://pypi.org/project/connect_four/
-   :alt: PyPI
-.. |Status| image:: https://img.shields.io/pypi/status/connect_four.svg
-   :target: https://pypi.org/project/connect_four/
-   :alt: Status
 .. |Python Version| image:: https://img.shields.io/pypi/pyversions/connect_four
    :target: https://pypi.org/project/connect_four
    :alt: Python Version
