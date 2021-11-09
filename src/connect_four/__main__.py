@@ -11,8 +11,6 @@ def main() -> None:
     game = Game()
     game.play()
 
-    return 0
-
 
 if __name__ == "__main__":
     main(prog_name="connect_four")  # pragma: no cover

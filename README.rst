@@ -1,18 +1,12 @@
 Connect_Four
 ============
 
-|PyPI| |Status| |Python Version| |License|
+|Python Version| |License|
 
 |Read the Docs| |Tests| |Codecov|
 
 |pre-commit| |Black|
 
-.. |PyPI| image:: https://img.shields.io/pypi/v/connect_four.svg
-   :target: https://pypi.org/project/connect_four/
-   :alt: PyPI
-.. |Status| image:: https://img.shields.io/pypi/status/connect_four.svg
-   :target: https://pypi.org/project/connect_four/
-   :alt: Status
 .. |Python Version| image:: https://img.shields.io/pypi/pyversions/connect_four
    :target: https://pypi.org/project/connect_four
    :alt: Python Version
@@ -40,8 +34,7 @@ Features
 --------
 
 * A Connect Four game in the console.
-* Created using _Cruft: https://cruft.github.io/cruft/
-* ..From the cookiecutter-hypermodern-python repository mentioned below.
+* Created using Cruft_, from the cookiecutter-hypermodern-python repository mentioned below.
 * Written with Python 3.10.0, though I've confirmed that it works with 3.9.7
 
 The actual CLI "UX" could use some polish. The implementation is slightly more than a first pass, but seems pretty good right now.
@@ -107,3 +100,4 @@ This project was generated from `@cjolowicz`_'s `Hypermodern Python Cookiecutter
 .. github-only
 .. _Contributor Guide: CONTRIBUTING.rst
 .. _Usage: https://connect_four.readthedocs.io/en/latest/usage.html
+.. _Cruft: https://cruft.github.io/cruft/

@@ -10,7 +10,7 @@ def test_game_play_simple() -> None:
     """
     moves = [0, 1, 0, 1, 0, 1, 0]
 
-    def mock_input(s) -> int:
+    def mock_input(s: str) -> int:
         return moves.pop(0)
 
     game = Game()
@@ -26,7 +26,7 @@ def test_game_play_simple_yellow() -> None:
     """
     moves = [0, 1, 0, 1, 0, 0, 0, 1, 0, 1]
 
-    def mock_input(s) -> int:
+    def mock_input(s: str) -> int:
         return moves.pop(0)
 
     game = Game()
@@ -42,7 +42,7 @@ def test_game_play_diagonal() -> None:
     """
     moves = [0, 1, 1, 2, 2, 3, 2, 3, 3, 5, 3]
 
-    def mock_input(s) -> int:
+    def mock_input(s: str) -> int:
         return moves.pop(0)
 
     game = Game()
@@ -58,7 +58,7 @@ def test_game_play_yellow_bottom_row() -> None:
     """
     moves = [0, 1, 1, 2, 2, 3, 2, 3, 3, 4]
 
-    def mock_input(s) -> int:
+    def mock_input(s: str) -> int:
         return moves.pop(0)
 
     game = Game()
