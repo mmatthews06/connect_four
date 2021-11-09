@@ -39,23 +39,29 @@ Connect_Four
 Features
 --------
 
-* TODO
+* A Connect Four game in the console.
+* Created using _Cruft: https://cruft.github.io/cruft/
+* ..From the cookiecutter-hypermodern-python repository mentioned below.
+* Written with Python 3.10.0, though I've confirmed that it works with 3.9.7
 
-
-Requirements
-------------
-
-* TODO
+The actual CLI "UX" could use some polish. The implementation is slightly more than a first pass, but seems pretty good right now.
 
 
 Installation
 ------------
 
-You can install *Connect_Four* via pip_ from PyPI_:
+You can install *Connect_Four* via pip_ from a clone of this repository:
 
 .. code:: console
 
-   $ pip install connect_four
+   $ mkdir connect_four_test && cd connect_four_test
+   $ git clone https://github.com/mmatthews06/connect_four.git
+   $ mkdir test && cd test
+   $ python -m venv env
+   $ source env/bin/activate
+   $ pip install ../connect_four
+   $ connect_four # should start the CLI.
+
 
 
 Usage
