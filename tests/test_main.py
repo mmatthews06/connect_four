@@ -16,10 +16,11 @@ def runner() -> CliRunner:
 def test_main_succeeds(runner: CliRunner) -> None:
     """It exits with a status code of zero."""
     moves = [0, 1, 0, 1, 0, 1, 0]
-    def mock_input(s):
+
+    def mock_input(s) -> int:
         return moves.pop(0)
 
-    with patch('connect_four.game.input', mock_input):
+    with patch("connect_four.game.input", mock_input):
         result = runner.invoke(__main__.main)
 
     assert result.exit_code == 0
