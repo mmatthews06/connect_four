@@ -1,0 +1,12 @@
+{
+  "_template": "https://github.com/cjolowicz/cookiecutter-hypermodern-python.git",
+  "author": "Michael Matthews",
+  "development_status": "Development Status :: 4 - Beta",
+  "email": "mmatthews06@gmail.com",
+  "friendly_name": "Connect_Four",
+  "github_user": "mmatthews06",
+  "license": "MIT",
+  "package_name": "connect_four",
+  "project_name": "connect_four",
+  "version": "0.1.0"
+}
