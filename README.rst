@@ -46,6 +46,7 @@ Features
 
 The actual CLI "UX" could use some polish. The implementation is slightly more than a first pass, but seems pretty good right now.
 
+This will include development instructions later, or upon request. Basically, install Poetry and Nox, and the development process should be pretty easy.
 
 Installation
 ------------
