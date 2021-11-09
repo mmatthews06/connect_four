@@ -71,3 +71,15 @@ def test_play_full_last_column():
         [0, 0, 0, 0, 0, 0, 2],
         [0, 0, 0, 0, 0, 0, 2],
     ]
+
+
+def test_neighborhood_bottom_left():
+    gb = GameBoard()
+    neighborhood = gb.neighborhood(5, 0)
+
+    assert neighborhood == [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        []
+    ]
