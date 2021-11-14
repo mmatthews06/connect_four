@@ -28,16 +28,27 @@ class GameBoard:
         changing "play()", as well.
         """
         for sequence in self.neighborhood(rowIdx, colIdx):
-            pieces_in_a_row = 0
+            # pieces_in_a_row = 0
 
-            for board_piece in sequence:
-                if board_piece == piece.value:
-                    pieces_in_a_row += 1
-                else:
-                    pieces_in_a_row = 0
+            # for board_piece in sequence:
+            #     if board_piece == piece.value:
+            #         pieces_in_a_row += 1
+            #     else:
+            #         pieces_in_a_row = 0
 
-                if pieces_in_a_row == 4:
+            #     if pieces_in_a_row == 4:
+            #         return True
+            val = piece.value
+            l_val = [val, val, val, val]
+            print('Sequence:', val, sequence)
+            match sequence:
+                # case *_, a, b, c, d, _ if a == val and b == val and c == val and d == val:
+                # case _, , _ if a == val and b == val and c == val and d == val:
+                case [_, *l_val, _]:
+                    print('Matched:', l_val)
                     return True
+                # case [*left, l_val]:
+                #     return True
 
         return False
 
