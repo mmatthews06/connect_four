@@ -1,6 +1,4 @@
-"""
-Test the GameBoard class.
-"""
+"""Test the GameBoard class."""
 from unittest.mock import call
 from unittest.mock import MagicMock
 from unittest.mock import patch
@@ -18,9 +16,7 @@ def test_initial_board() -> None:
 
 @patch("builtins.print")
 def test_display(mock_print: MagicMock) -> None:
-    """
-    Testing the display method.
-    """
+    """Testing the display method."""
     gb = GameBoard()
     gb.display()
 
@@ -35,9 +31,7 @@ def test_display(mock_print: MagicMock) -> None:
 
 
 def test_play_single() -> None:
-    """
-    Test a single "move" on the board.
-    """
+    """Test a single "move" on the board."""
     gb = GameBoard()
 
     gb.play(GamePiece.RED, 0)
@@ -53,9 +47,7 @@ def test_play_single() -> None:
 
 
 def test_play_full_column() -> None:
-    """
-    Try to fill the first column
-    """
+    """Try to fill the first column."""
     gb = GameBoard()
 
     for _ in range(GameBoard.NUM_ROWS):
@@ -72,9 +64,7 @@ def test_play_full_column() -> None:
 
 
 def test_play_full_last_column() -> None:
-    """
-    Try to fill the last column.
-    """
+    """Try to fill the last column."""
     gb = GameBoard()
 
     for _ in range(GameBoard.NUM_ROWS):
@@ -91,9 +81,7 @@ def test_play_full_last_column() -> None:
 
 
 def test_play_diagonal() -> None:
-    """
-    Play a game that leads to a stacked diagonal.
-    """
+    """Play a game that leads to a stacked diagonal."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.YELLOW, 1)
@@ -117,10 +105,7 @@ def test_play_diagonal() -> None:
 
 
 def test_neighborhood_bottom_left() -> None:
-    """
-    The neighborhood method should return arrays with the
-    correct dimensions.
-    """
+    """The neighborhood method should return arrays with the correct dimensions."""
     gb = GameBoard()
     neighborhood = gb.neighborhood(5, 0)
 
@@ -133,10 +118,7 @@ def test_neighborhood_bottom_left() -> None:
 
 
 def test_neighborhood_bottom_left_with_pieces() -> None:
-    """
-    The neighborhood method should return the correct values
-    when the bottom row is partially full.
-    """
+    """The neighborhood method should return the correct values when the bottom row is partially full."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 1)
