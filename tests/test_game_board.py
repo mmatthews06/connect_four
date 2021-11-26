@@ -1,3 +1,6 @@
+"""
+Test the GameBoard class.
+"""
 from unittest.mock import call
 from unittest.mock import MagicMock
 from unittest.mock import patch
@@ -151,53 +154,43 @@ def test_neighborhood_bottom_left_with_pieces() -> None:
 
 
 def test_check_win_bottom_row() -> None:
-    """
-    Dropping pieces in 4 columns should cause a win.
-    """
+    """Dropping pieces in 4 columns should cause a win."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 1)
     gb.play(GamePiece.RED, 2)
-    rowIdx = gb.play(GamePiece.RED, 3)
+    row_idx = gb.play(GamePiece.RED, 3)
 
-    assert rowIdx == 5
-    assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
+    assert row_idx == 5
+    assert gb.check_win(GamePiece.RED, row_idx, 3)
 
 
 def test_check_win_column() -> None:
-    """
-    Dropping 4 pieces in the first column should deliver a win.
-    """
+    """Dropping 4 pieces in the first column should deliver a win."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 0)
-    rowIdx = gb.play(GamePiece.RED, 0)
+    row_idx = gb.play(GamePiece.RED, 0)
 
-    assert rowIdx == 2
-    assert gb.check_win(GamePiece.RED, rowIdx, 0) == True
+    assert row_idx == 2
+    assert gb.check_win(GamePiece.RED, row_idx, 0)
 
 
 def test_check_not_win_diff_column() -> None:
-    """
-    Filling the first column, but checking for a win in a different
-    column should not cause a win.
-    """
+    """Filling the first column, but checking for a win in a different column should not cause a win."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 0)
-    rowIdx = gb.play(GamePiece.RED, 0)
+    row_idx = gb.play(GamePiece.RED, 0)
 
-    assert rowIdx == 2
-    assert gb.check_win(GamePiece.RED, rowIdx, 2) == False
+    assert row_idx == 2
+    assert not gb.check_win(GamePiece.RED, row_idx, 2)
 
 
 def test_check_win_diagonal() -> None:
-    """
-    Play a game that results in 4 RED values on the diagonal, should
-    deliver a win.
-    """
+    """Play a game that results in 4 RED values on the diagonal, should deliver a win."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.YELLOW, 1)
@@ -208,10 +201,10 @@ def test_check_win_diagonal() -> None:
     gb.play(GamePiece.YELLOW, 3)
     gb.play(GamePiece.YELLOW, 3)
     gb.play(GamePiece.YELLOW, 3)
-    rowIdx = gb.play(GamePiece.RED, 3)
+    row_idx = gb.play(GamePiece.RED, 3)
 
-    assert rowIdx == 2
-    assert gb.check_win(GamePiece.RED, rowIdx, 3) == True
+    assert row_idx == 2
+    assert gb.check_win(GamePiece.RED, row_idx, 3)
 
 
 def test_check_not_win_with_gap() -> None:
@@ -222,10 +215,10 @@ def test_check_not_win_with_gap() -> None:
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 1)
     gb.play(GamePiece.RED, 2)
-    rowIdx = gb.play(GamePiece.RED, 4)
+    row_idx = gb.play(GamePiece.RED, 4)
 
-    assert rowIdx == 5
-    assert gb.check_win(GamePiece.RED, rowIdx, 4) == False
+    assert row_idx == 5
+    assert not gb.check_win(GamePiece.RED, row_idx, 4)
 
 
 def test_check_not_win_with_gap_in_diagonal() -> None:
@@ -247,9 +240,9 @@ def test_check_not_win_with_gap_in_diagonal() -> None:
     gb.play(GamePiece.YELLOW, 4)
     gb.play(GamePiece.YELLOW, 4)
     gb.play(GamePiece.YELLOW, 4)
-    rowIdx = gb.play(GamePiece.RED, 4)
+    row_idx = gb.play(GamePiece.RED, 4)
 
-    assert rowIdx == 1
+    assert row_idx == 1
     assert gb.board() == [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 1, 0, 0],
@@ -258,7 +251,7 @@ def test_check_not_win_with_gap_in_diagonal() -> None:
         [0, 1, 2, 2, 2, 0, 0],
         [1, 2, 2, 2, 2, 0, 0],
     ]
-    assert gb.check_win(GamePiece.RED, rowIdx, 4) == False
+    assert not gb.check_win(GamePiece.RED, row_idx, 4)
 
 
 def test_diagonals_down() -> None:
