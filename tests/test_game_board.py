@@ -9,9 +9,12 @@ from connect_four.game_board import GamePiece
 
 
 def test_initial_board() -> None:
+    """Testing the initial board size."""
     gb = GameBoard()
 
     assert len(gb.board()) == 6
+    for column in gb.board():
+        assert len(column) == 7
 
 
 @patch("builtins.print")
@@ -190,9 +193,7 @@ def test_check_win_diagonal() -> None:
 
 
 def test_check_not_win_with_gap() -> None:
-    """
-    A gap in the sequence on the bottom row should not indicate a win.
-    """
+    """A gap in the sequence on the bottom row should not indicate a win."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.RED, 1)
@@ -204,9 +205,7 @@ def test_check_not_win_with_gap() -> None:
 
 
 def test_check_not_win_with_gap_in_diagonal() -> None:
-    """
-    A gap in the sequence on the diagonal should not indicate a win.
-    """
+    """A gap in the sequence on the diagonal should not indicate a win."""
     gb = GameBoard()
     gb.play(GamePiece.RED, 0)
     gb.play(GamePiece.YELLOW, 1)
@@ -237,10 +236,7 @@ def test_check_not_win_with_gap_in_diagonal() -> None:
 
 
 def test_diagonals_down() -> None:
-    """
-    The Diagonal helper class should return the right
-    "downward", negatively sloped diagonal for a position.
-    """
+    """The Diagonal helper class should return the right "downward", negatively sloped diagonal for a position."""
     diagonals = Diagonals()
 
     assert diagonals.get_down_diagonal(0, 4) == []
@@ -255,10 +251,7 @@ def test_diagonals_down() -> None:
 
 
 def test_diagonals_up() -> None:
-    """
-    The Diagonal helper class should return the right
-    "upward", positively sloped diagonal for a position.
-    """
+    """The Diagonal helper class should return the right "upward", positively sloped diagonal for a position."""
     diagonals = Diagonals()
 
     assert diagonals.get_up_diagonal(0, 4) == [(0, 4), (1, 3), (2, 2), (3, 1), (4, 0)]

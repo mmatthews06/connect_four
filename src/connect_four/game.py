@@ -11,7 +11,9 @@ class Game:
         self.game_board = GameBoard()
         self.player_one = GamePiece.RED
         self.player_two = GamePiece.YELLOW
-        self.winner: GamePiece | None = None
+        self.winner: GamePiece | None = (
+            None  # nomypy # no great reason, just skipping mypy.
+        )
 
     def play(self) -> None:
         """Play a game that has been setup."""
