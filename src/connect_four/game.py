@@ -1,4 +1,6 @@
 """game.py - module for playing a game on the game board."""
+from typing import Union
+
 from connect_four.game_board import GameBoard
 from connect_four.game_board import GamePiece
 
@@ -11,7 +13,7 @@ class Game:
         self.game_board = GameBoard()
         self.player_one = GamePiece.RED
         self.player_two = GamePiece.YELLOW
-        self.winner: GamePiece | None = None  # type: ignore
+        self.winner: Union[GamePiece, None] = None
 
     def play(self) -> None:
         """Play a game that has been setup."""
