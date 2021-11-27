@@ -11,7 +11,7 @@ class Game:
         self.game_board = GameBoard()
         self.player_one = GamePiece.RED
         self.player_two = GamePiece.YELLOW
-        self.winner: GamePiece | None = None  # type: ignore , no great reason, just for fun.
+        self.winner: GamePiece | None = None  # type: ignore
 
     def play(self) -> None:
         """Play a game that has been setup."""
