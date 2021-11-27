@@ -11,8 +11,8 @@ class Game:
         self.game_board = GameBoard()
         self.player_one = GamePiece.RED
         self.player_two = GamePiece.YELLOW
-        self.winner: GamePiece | None = (
-            None  # nomypy # no great reason, just skipping mypy.
+        self.winner: GamePiece | None = (  # nomypy # no great reason, just skipping mypy.
+            None
         )
 
     def play(self) -> None:
