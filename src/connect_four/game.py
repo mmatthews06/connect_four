@@ -1,15 +1,22 @@
+"""game.py - module for playing a game on the game board."""
+from typing import Union
+
 from connect_four.game_board import GameBoard
 from connect_four.game_board import GamePiece
 
 
 class Game:
+    """Game - manage the playing of a Connect Four game."""
+
     def __init__(self) -> None:
+        """Initialize a new game."""
         self.game_board = GameBoard()
         self.player_one = GamePiece.RED
         self.player_two = GamePiece.YELLOW
-        self.winner: GamePiece | None = None
+        self.winner: Union[GamePiece, None] = None
 
     def play(self) -> None:
+        """Play a game that has been setup."""
         row_idx = 0
         active_player = self.player_one
 
@@ -35,7 +42,5 @@ class Game:
         print(f"Congratulations, {self.winner}!")
 
     def player_won(self, piece: GamePiece) -> bool:
-        """
-        Return true if the specified piece is the game winner.
-        """
+        """Return true if the specified piece is the game winner."""
         return self.winner == piece
